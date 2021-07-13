@@ -97,7 +97,7 @@ exports.deleteOne = (req, res) => {
 
   const id = req.body.id;
 
-  Students.findByIdAndRemove(id)
+  Students.findByIdAndRemove(id,{ useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
