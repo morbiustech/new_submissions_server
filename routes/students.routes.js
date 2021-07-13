@@ -10,7 +10,10 @@ module.exports = app => {
     router.get("/students/find/all", students.findAll);
 
     // Find one student 
-    router.get("/students/edit", students.findOne);
+    router.post("/students/edit", students.findOne);
+
+    // Delete individual student
+    router.delete("/students/remove",students.deleteOne)
   
     router.delete("/students/delete/all", students.deleteAll);
   

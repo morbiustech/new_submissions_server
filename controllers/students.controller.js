@@ -35,6 +35,7 @@ exports.findOne = (req, res) => {
   const id = req.body.id;
 
   Students.findById(id)
+    .populate('batch_id')
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Student with id " + id });
@@ -89,6 +90,31 @@ exports.findAll = (req, res) => {
     });
   });
   
+};
+
+
+exports.deleteOne = (req, res) => {
+
+  const id = req.body.id;
+
+  Students.findByIdAndRemove(id)
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot delete Student with id=${id}. Maybe Student was not found!`
+        });
+      } else {
+        res.send({
+          message: "Student was deleted successfully!"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "Could not delete Student with id=" + id
+      });
+    });
+
 };
 
 
