@@ -95,7 +95,7 @@ exports.findAll = (req, res) => {
 
 exports.deleteOne = (req, res) => {
 
-  const id = req.body.id;
+  const id = req.params.id;
 
   Students.findByIdAndRemove(id,{ useFindAndModify: false })
     .then(data => {

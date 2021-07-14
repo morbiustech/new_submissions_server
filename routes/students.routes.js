@@ -13,7 +13,7 @@ module.exports = app => {
     router.post("/students/edit", students.findOne);
 
     // Delete individual student
-    router.delete("/students/remove",students.deleteOne)
+    router.delete("/students/remove/:id",students.deleteOne)
   
     router.delete("/students/delete/all", students.deleteAll);
   
