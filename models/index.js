@@ -12,6 +12,8 @@ db.role = require("./role.model");
 db.batches = require("./batches.model")
 db.students = require("./students.model")
 db.assignments = require("./assignments.model")
+db.fees = require("./fees.model")
+db.attendance = require("./attendance.model")
 
 db.ROLES = ["user", "admin", "moderator"];
 

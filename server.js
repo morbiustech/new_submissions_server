@@ -68,6 +68,8 @@ require('./routes/user.routes')(app);
 require('./routes/batches.routes')(app);
 require('./routes/students.routes')(app);
 require('./routes/assignments.routes')(app);
+require('./routes/fees.routes')(app);
+require('./routes/attendance.routes')(app);
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to todo mongo server 1.0" });
