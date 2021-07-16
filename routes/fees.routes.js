@@ -9,6 +9,9 @@ module.exports = app => {
     // get all fees details
     router.get("/fees/all",Fees.findAll)
 
+    // get individual fee details
+    router.post("/student/fees/details",Fees.findOne)
+
     // delete all fees collection
     router.delete("/fees/remove/all",Fees.deleteAll)
 

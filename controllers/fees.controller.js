@@ -35,20 +35,19 @@ exports.create = (req, res) => {
 
 exports.findOne = (req, res) => {
 
-  const id = req.body.id;
+  const id = req.body.student_id;
 
-  Students.findById(id)
-    .populate('batch_id')
-    .then(data => {
-      if (!data)
-        res.status(404).send({ message: "Not found Student with id " + id });
-      else res.send(data);
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .send({ message: "Error retrieving Student with id=" + id });
+  Fees.find({student_id: [ { _id: id }]})
+  .then(data=>{
+      res.send(data)
+  })
+  .catch(err => {
+        res
+          .status(500)
+          .send({ message: "Error retrieving Student with id=" + id });
     });
+  
+
 
 };
 
