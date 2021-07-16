@@ -9,6 +9,9 @@ module.exports = app => {
     // get all fees details
     router.get("/fees/all",Fees.findAll)
 
+    // delete all fees collection
+    router.delete("/fees/remove/all",Fees.deleteAll)
+
    
     app.use('/api/submissions', router);
   };

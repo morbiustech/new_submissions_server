@@ -5,10 +5,10 @@ const schema = mongoose.Schema(
         lectures_alloted:Number,
         fee_cycle: Number,
         student_id: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref:'Students'
-            }
+          {
+              type: mongoose.Schema.Types.ObjectId,
+              ref:'Students'
+          }
         ],
       },
       { timestamps: true }

@@ -3,6 +3,8 @@ const Fees = db.fees
 
 // Create and Save a new Todo
 exports.create = (req, res) => {
+
+  console.log('student id is ',req.body.student_id)
       // Validate request
   if (!req.body.fee_amount || !req.body.lectures_alloted || !req.body.student_id) {
     res.status(400).send({ message: "fee_amount  or lectures_alloted  or student_id  cannot be empty!" });
@@ -120,16 +122,16 @@ exports.deleteOne = (req, res) => {
 
 exports.deleteAll = (req, res) => {
 
-  Students.deleteMany({})
+  Fees.deleteMany({})
   .then(data => {
     res.send({
-      message: `${data.deletedCount} Students were deleted successfully!`
+      message: `${data.deletedCount} Fees Data were deleted successfully!`
     });
   })
   .catch(err => {
     res.status(500).send({
       message:
-        err.message || "Some error occurred while removing all Students."
+        err.message || "Some error occurred while removing all Fees Data."
     });
   });
 
