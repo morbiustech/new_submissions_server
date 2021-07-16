@@ -82,6 +82,7 @@ exports.findAll = (req, res) => {
 
 
   Fees.find()
+    .populate('student_id')
     .then(data => {
     res.send(data);
   })
