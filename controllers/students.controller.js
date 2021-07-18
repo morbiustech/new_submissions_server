@@ -18,9 +18,11 @@ exports.create = (req, res) => {
     last_name: req.body.last_name,
     phone:req.body.phone,
     email:req.body.email,
+    parent_email: req.body.parent_email,
+    parent_contact: req.body.parent_contact,
     address:req.body.address,
     mode:req.body.mode,
-    course:req.body.course_id
+    course_id:req.body.course_id
   })
   console.log(student_data)
 
@@ -42,6 +44,7 @@ exports.findOne = (req, res) => {
   const id = req.body.id;
 
   Students.findById(id)
+    .populate('course_id')
     .populate('batch_id')
     .then(data => {
       if (!data)
@@ -86,6 +89,7 @@ exports.findAll = (req, res) => {
 
 
   Students.find()
+    .populate('course_id')
     .populate('batch_id')
     .then(data => {
     res.send(data);

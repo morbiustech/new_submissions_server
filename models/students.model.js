@@ -5,6 +5,8 @@ const schema = mongoose.Schema(
         last_name:String,
         email:String,
         phone:Number,
+        parent_email:String,
+        parent_contact:String,
         address:String,
         mode:String,
         course_id: [
