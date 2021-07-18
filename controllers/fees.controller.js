@@ -38,6 +38,7 @@ exports.findOne = (req, res) => {
   const id = req.body.student_id;
 
   Fees.find({student_id: [ { _id: id }]})
+  .populate('student_id')
   .then(data=>{
       res.send(data)
   })

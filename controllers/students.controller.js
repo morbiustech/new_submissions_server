@@ -4,16 +4,23 @@ const Students = db.students
 // Create and Save a new Todo
 exports.create = (req, res) => {
       // Validate request
-  if (!req.body.student_name || !req.body.student_grade || !req.body.batch_id) {
+  if (!req.body.first_name
+       || !req.body.last_name || !req.body.phone 
+       || !req.body.email || !req.body.course_id
+      ) {
     res.status(400).send({ message: "Student Name or Student Grade or Batch ID cannot be empty!" });
     return;
   }
 
   // Create a Tutorial
   const student_data = new Students({
-    student_name: req.body.student_name,
-    student_grade: req.body.student_grade,
-    batch_id:req.body.batch_id
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    phone:req.body.phone,
+    email:req.body.email,
+    address:req.body.address,
+    mode:req.body.mode,
+    course:req.body.course_id
   })
   console.log(student_data)
 

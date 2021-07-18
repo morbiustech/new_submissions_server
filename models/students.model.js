@@ -1,8 +1,18 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema(
       {
-        student_name: String,
-        student_grade: String,
+        first_name: String,
+        last_name:String,
+        email:String,
+        phone:Number,
+        address:String,
+        mode:String,
+        course_id: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Courses'
+          }
+        ],
         batch_id: [
             {
                 type: mongoose.Schema.Types.ObjectId,

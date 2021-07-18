@@ -79,8 +79,9 @@ exports.update = (req, res) => {
 exports.findAll = (req, res) => {
 
 
-  Students.find()
-    .populate('batch_id')
+  Attendance.find()
+    .populate('student_id')
+    .populate('fee_id')
     .then(data => {
     res.send(data);
   })
@@ -121,16 +122,16 @@ exports.deleteOne = (req, res) => {
 
 exports.deleteAll = (req, res) => {
 
-  Students.deleteMany({})
+  Attendance.deleteMany({})
   .then(data => {
     res.send({
-      message: `${data.deletedCount} Students were deleted successfully!`
+      message: `${data.deletedCount} Attendance were deleted successfully!`
     });
   })
   .catch(err => {
     res.status(500).send({
       message:
-        err.message || "Some error occurred while removing all Students."
+        err.message || "Some error occurred while removing all Attendance."
     });
   });
 
