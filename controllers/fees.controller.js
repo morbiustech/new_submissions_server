@@ -5,8 +5,9 @@ const Fees = db.fees
 exports.create = (req, res) => {
 
   console.log('student id is ',req.body.student_id)
+  console.log(req.body)
       // Validate request
-  if (!req.body.fee_amount || !req.body.lectures_alloted || !req.body.student_id || req.body.fee_cycle) {
+  if (!req.body.fee_amount || !req.body.lectures_alloted || !req.body.student_id || !req.body.fee_cycle) {
     res.status(400).send({ message: "fee_amount  or lectures_alloted  or student_id  cannot be empty!" });
     return;
   }
@@ -18,6 +19,7 @@ exports.create = (req, res) => {
     fee_cycle:req.body.fee_cycle,
     valid_till:req.body.valid_till,
     extended_period:req.body.extended_period,
+    remarks:req.body.remarks,
     student_id:req.body.student_id
   })
   console.log(fees_data)
