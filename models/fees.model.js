@@ -4,6 +4,9 @@ const schema = mongoose.Schema(
         fee_amount: Number,
         lectures_alloted:Number,
         fee_cycle: Number,
+        remarks:String,
+        valid_till:Date,
+        extended_period:Date,
         student_id: [
           {
               type: mongoose.Schema.Types.ObjectId,
