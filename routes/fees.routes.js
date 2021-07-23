@@ -12,9 +12,12 @@ module.exports = app => {
     // get individual fee details
     router.post("/student/fees/details",Fees.findOne)
 
+
     // delete all fees collection
     router.delete("/fees/remove/all",Fees.deleteAll)
 
+    // get fee receipt details
+    router.post("/fees/receipt/details",Fees.getFeeReceiptDetails)
    
     app.use('/api/submissions', router);
   };
