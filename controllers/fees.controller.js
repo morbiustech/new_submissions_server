@@ -104,21 +104,21 @@ exports.deleteOne = (req, res) => {
 
   const id = req.params.id;
 
-  Students.findByIdAndRemove(id,{ useFindAndModify: false })
+  Fees.findByIdAndRemove(id,{ useFindAndModify: false })
     .then(data => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Student with id=${id}. Maybe Student was not found!`
+          message: `Cannot delete Fees with id=${id}. Maybe Fees was not found!`
         });
       } else {
         res.send({
-          message: "Student was deleted successfully!"
+          message: "Fees was deleted successfully!"
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Student with id=" + id
+        message: "Could not delete fees with id=" + id
       });
     });
 

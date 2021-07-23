@@ -13,6 +13,9 @@ module.exports = app => {
     router.post("/student/fees/details",Fees.findOne)
 
 
+    // delete individual fees data
+    router.delete("/fees/single/remove/:id",Fees.deleteOne)
+
     // delete all fees collection
     router.delete("/fees/remove/all",Fees.deleteAll)
 

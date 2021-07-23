@@ -12,6 +12,9 @@ module.exports = app => {
       // Count Attendance data
       router.post("/attendance/count", Attendance.countAttendanceData);
    
+
+      // Delete single attendance data
+      router.delete("/attendance/single/remove/:id",Attendance.deleteOne)
       // Delete All Attendance Data
       router.delete("/attendance/remove/all",Attendance.deleteAll)
   
