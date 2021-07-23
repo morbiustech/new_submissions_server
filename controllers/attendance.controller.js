@@ -36,6 +36,8 @@ exports.findOne = (req, res) => {
   const student_id = req.body.student_id;
 
   Attendance.find({ student_id: student_id})
+    .populate('student_id')
+    .populate('fee_id')
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Student with id " + id });
