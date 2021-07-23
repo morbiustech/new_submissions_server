@@ -6,6 +6,9 @@ module.exports = app => {
       // Create attendance details
       router.post("/attendance/add", Attendance.create);
 
+       // Get Student Wise Attendance
+       router.post("/attendance/single/find",Attendance.findOne)
+
       // Get All Attendance
       router.get("/attendance/find/all",Attendance.findAll)
 

@@ -33,10 +33,9 @@ exports.create = (req, res) => {
 
 exports.findOne = (req, res) => {
 
-  const id = req.body.id;
+  const student_id = req.body.student_id;
 
-  Students.findById(id)
-    .populate('batch_id')
+  Attendance.find({ student_id: student_id})
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Student with id " + id });
