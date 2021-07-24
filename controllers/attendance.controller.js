@@ -1,6 +1,6 @@
 const db = require("../models");
 const Attendance = db.attendance
-
+const sendAttendanceEmail = require('../emails/attendance')
 // Create and Save a new Todo
 exports.create = (req, res) => {
       // Validate request
@@ -185,6 +185,27 @@ exports.countAttendanceData = (req,res) => {
               err.message || "Some error occurred while creating the Batch."
           });
     })
+
+
+}
+
+exports.sendAttendanceEmail = (req,res) => {
+
+  const student_data = req.body
+  const name = student_data.firstname
+  const email = student_data.email
+  const lecture_attended = student_data.count
+  const lectures_alloted = student_data.lectures_alloted
+  const subject = 'Your Attendance has been Recorded!'
+  console.log(email,lecture_attended,lectures_alloted)
+   sendAttendanceEmail(name,email, subject, lecture_attended,lectures_alloted, function(err, data) {
+          if (err) {
+              console.log('ERROR: ', err);
+              return res.status(500).json({ message: err.message || 'Internal Error' });
+          }
+          console.log('Email sent!!!');
+          return res.json({ message: 'Email sent!!!!!' });
+       });
 
 
 }
