@@ -1,6 +1,6 @@
 const db = require("../models");
 const Students = db.students
-
+const sendOnboardingMail = require('../emails/onboarding')
 // Create and Save a new Todo
 exports.create = (req, res) => {
       // Validate request
@@ -28,7 +28,21 @@ exports.create = (req, res) => {
 
   // Save Todo in the database
   Students.create(student_data).then(data => {
-      res.send(data);
+
+       res.send(data);
+       const name = student_data.first_name+' '+student_data.last_name
+       const email = student_data.email
+       const subject = 'Welcome Onboard!'
+       const text = 'We wish you all the best in your musical adventures!'
+       sendOnboardingMail(name,email, subject, text, function(err, data) {
+           if (err) {
+               console.log('ERROR: ', err);
+               return res.status(500).json({ message: err.message || 'Internal Error' });
+           }
+           console.log('Email sent!!!');
+           return res.json({ message: 'Email sent!!!!!' });
+        });
+
     })
     .catch(err => {
       res.status(500).send({
