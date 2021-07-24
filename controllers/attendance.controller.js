@@ -192,7 +192,7 @@ exports.countAttendanceData = (req,res) => {
 exports.sendAttendanceEmail = (req,res) => {
 
   const student_data = req.body
-  const name = student_data.firstname
+  const name = student_data.first_name + ' ' + student_data.last_name
   const email = student_data.email
   const lecture_attended = student_data.count
   const lectures_alloted = student_data.lectures_alloted
