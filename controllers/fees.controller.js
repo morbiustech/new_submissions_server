@@ -161,3 +161,24 @@ exports.getFeeReceiptDetails = (req, res) => {
 
 
 };
+
+exports.getFeesData = (req,res) =>{
+
+
+  const id = req.body.fee_id;
+
+  Fees.findById(id)
+  .populate('student_id')
+  .then(data=>{
+      res.send(data)
+  })
+  .catch(err => {
+        res
+          .status(500)
+          .send({ message: "Error retrieving Student with id=" + id });
+    });
+  
+
+
+
+}

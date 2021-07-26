@@ -12,6 +12,9 @@ module.exports = app => {
     // get individual fee details
     router.post("/student/fees/details",Fees.findOne)
 
+    // get specfic fee data by id 
+    router.post("/student/fee/data",Fees.getFeesData)
+
 
     // delete individual fees data
     router.delete("/fees/single/remove/:id",Fees.deleteOne)
