@@ -27,7 +27,7 @@ const sendWelcomeMail = async(name,email, subject, text,cb) => {
     const mailOptions = {
         from: process.env.EMAIL, // TODO replace this with your own email
         to: email, // TODO: the receiver email has to be authorized for the free tier
-        cc:['mithilesh.tarkar@gmail.com','venkatesh.konar0307@gmail.com','rnirbhavane12@gmail.com'],
+        cc:['mithilesh.tarkar@gmail.com','venkatesh.konar0307@gmail.com','rnirbhavane12@gmail.com','prajaktsalve198@gmail.com'],
         subject,
         template: {
             name: 'welcome.hbs',
