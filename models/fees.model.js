@@ -1,12 +1,38 @@
 const mongoose = require("mongoose");
 const schema = mongoose.Schema(
       {
-        fee_amount: Number,
-        lectures_alloted:Number,
-        fee_cycle: Number,
-        remarks:String,
-        valid_till:Date,
-        extended_period:Date,
+        fee_amount:{
+            type:Number,
+            required:true
+        },
+        lectures_alloted:{
+            type:Number,
+            required:true,
+
+        },
+        fee_cycle: {
+
+            type:Number,
+            required:true
+
+        },
+        remarks:{
+          
+            type: String,
+            required:true
+
+        },
+        valid_till:{
+
+            type:Date,
+            required:true
+        },
+        extended_period:{
+
+             type:Date,
+             required:true
+
+        },
         student_id: [
           {
               type: mongoose.Schema.Types.ObjectId,
