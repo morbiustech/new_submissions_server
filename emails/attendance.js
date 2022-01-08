@@ -29,7 +29,7 @@ const sendOnboardingEmail = async(name,email, subject,lecture_attended,lectures_
     const mailOptions = {
         from: process.env.EMAIL, // TODO replace this with your own email
         to: email, // TODO: the receiver email has to be authorized for the free tier
-        cc:['mithilesh.tarkar@gmail.com','venkatesh.konar0307@gmail.com','rnirbhavane12@gmail.com','prajaktsalve198@gmail.com'],
+        cc:['mithilesh.tarkar@gmail.com'],
         subject,
         template: {
             name: 'attendance_email.hbs',
