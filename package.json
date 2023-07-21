@@ -16,10 +16,12 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
     "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
     "mailgun-js": "^0.22.0",
-    "mailgun.js": "^8.2.1",
+    "mailgun.js": "^8.2.2",
     "mongoose": "^5.12.14",
     "nodemailer": "^6.6.3",
     "nodemailer-mailgun-transport": "^2.1.3"
