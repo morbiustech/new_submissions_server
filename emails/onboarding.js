@@ -9,7 +9,7 @@ const mailGun = require('nodemailer-mailgun-transport');
 const auth = {
     auth: {
         api_key: process.env.API_KEY || '92fbba3340d55791b469754ed108fa9a-53c13666-e46ce901', // TODO: Replace with your mailgun API KEY
-        domain: process.env.DOMAIN || 'sandboxb3cf762d23f94797ae859038c83238c8.mailgun.org' // TODO: Replace with your mailgun DOMAIN
+        domain: process.env.DOMAIN || 'notifications.morbius.co' // TODO: Replace with your mailgun DOMAIN
     }
 };
 console.log(auth)
@@ -25,7 +25,7 @@ const sendOnboardingEmail = async(name,email, subject, text,cb) => {
         email: email,
       };
     const mailOptions = {
-        from: process.env.EMAIL, // TODO replace this with your own email
+        from: 'mithilesh.tarkar@gmail.com', // TODO replace this with your own email
         to: email, // TODO: the receiver email has to be authorized for the free tier
         cc:['mithilesh.tarkar@gmail.com'],
         subject,

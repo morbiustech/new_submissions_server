@@ -37,7 +37,7 @@ exports.create = (req, res) => {
        sendOnboardingMail(name,email, subject, text, function(err, data) {
            if (err) {
                console.log('ERROR: ', err);
-               return res.status(500).json({ message: err.message || 'Internal Error' });
+               return res.status(500)
            }
            console.log('Email sent!!!');
            return res.json({ message: 'Email sent!!!!!' });
@@ -45,10 +45,7 @@ exports.create = (req, res) => {
 
     })
     .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while creating Student Details."
-      });
+      res.status(500)
     });
   
 };
