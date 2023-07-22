@@ -1,6 +1,22 @@
 const db = require("../models");
 const Attendance = db.attendance
-const sendAttendanceEmail = require('../emails/attendance')
+
+const formData = require('form-data');
+const Mailgun = require('mailgun.js')
+const mailgun = new Mailgun(formData);
+const Handlebars = require('handlebars');
+const fs = require('fs')
+const { data } = require('../data')
+
+const mg = mailgun.client({
+  username:'api',
+  key: data.MAILGUN_API_KEY,
+  public_key: data.PUBLIC_KEY
+
+})
+const templateSource = fs.readFileSync('attendance_email.hbs','utf-8');
+// Compile the template
+const template = Handlebars.compile(templateSource);
 // Create and Save a new Todo
 exports.create = (req, res) => {
       // Validate request
@@ -198,14 +214,32 @@ exports.sendAttendanceEmail = (req,res) => {
   const lectures_alloted = student_data.lectures_alloted
   const subject = 'Your Attendance has been Recorded!'
   console.log(email,lecture_attended,lectures_alloted)
-   sendAttendanceEmail(name,email, subject, lecture_attended,lectures_alloted, function(err, data) {
-          if (err) {
-              console.log('ERROR: ', err);
-              return res.status(500).json({ message: err.message || 'Internal Error' });
-          }
-          console.log('Email sent!!!');
-          return res.json({ message: 'Email sent!!!!!' });
-       });
-
+  const myData = {
+    student_data: student_data,
+    name: name, 
+    email: email,
+    lectures_alloted,
+    lecture_attended: lecture_attended,
+    subject: subject
+  }
+  const renderedEmail = template(myData);
+  try{
+   mg.messages.create('notifications.morbius.co', {
+       from: '101musicals@gmail.com',
+       to: email,
+       subject: subject,
+       html: renderedEmail
+     })
+     .then(msg => {
+           console.log(msg)
+           res.sendStatus(200)
+     }) 
+     .catch(err => {
+       console.error(err)
+     });
+   }
+   catch(e){
+       console.log(e)
+   }
 
 }
